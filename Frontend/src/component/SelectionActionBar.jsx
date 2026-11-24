@@ -1,4 +1,3 @@
-import React from 'react';
 import { X, Star, FolderPlus, Trash2 } from 'lucide-react';
 
 const SelectionActionBar = ({ selectedCount, onClear, onFavorite, onAddToAlbum, onMoveToTrash }) => {
