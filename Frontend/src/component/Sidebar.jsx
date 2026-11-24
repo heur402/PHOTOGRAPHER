@@ -14,7 +14,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
         {/* Logo Area */}
         <div className="flex items-center gap-2 p-6">
           <div className="w-6 h-6 bg-gradient-to-tr from-purple-500 to-orange-400 rounded-md"></div>
-          <span className="font-bold text-xl tracking-wide">MY PHOTOS</span>
+          <span className="font-bold text-xl tracking-wide">PHOTOGRAPHER</span>
         </div>
 
         {/* Action Buttons */}
