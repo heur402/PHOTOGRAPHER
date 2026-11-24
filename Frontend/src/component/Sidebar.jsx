@@ -1,4 +1,3 @@
-import React from 'react';
 import { Image, Star, Folder, Trash2, Plus, HardDrive } from 'lucide-react';
 
 const Sidebar = ({ activeTab, setActiveTab }) => {
@@ -10,7 +9,8 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
   ];
 
   return (
-    <aside className="w-[260px] h-screen border-r border-gray-200 bg-white flex flex-col justify-between fixed left-0 top-[72px] z-20">
+    // Changed h-screen to calc(100vh-72px) so it fits exactly under the TopBar
+    <aside className="w-[260px] h-[calc(100vh-72px)] border-r border-gray-200 bg-white flex flex-col justify-between fixed left-0 top-[72px] z-20">
       <div>
         {/* Action Buttons */}
         <div className="px-4 space-y-3 pt-6 mb-6">
