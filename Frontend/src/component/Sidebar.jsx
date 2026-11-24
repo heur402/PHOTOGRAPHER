@@ -1,4 +1,4 @@
-import { Image, Star, Folder, Trash2, Plus, CloudUpload } from 'lucide-react';
+import { Image, Star, Folder, Trash2, Plus, HardDrive } from 'lucide-react';
 
 const Sidebar = ({ activeTab, setActiveTab }) => {
   const navItems = [
@@ -9,20 +9,25 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
   ];
 
   return (
-    <aside className="w-[260px] h-screen border-r border-gray-200 bg-white flex flex-col justify-between fixed left-0 top-0">
+    <aside className="w-[260px] h-screen border-r border-gray-100 bg-white flex flex-col justify-between fixed left-0 top-0 z-20">
       <div>
         {/* Logo Area */}
-        <div className="flex items-center gap-2 p-6">
-          <div className="w-6 h-6 bg-gradient-to-tr from-purple-500 to-orange-400 rounded-md"></div>
-          <span className="font-bold text-xl tracking-wide">PHOTOGRAPHER</span>
+        <div className="flex items-center gap-2.5 px-6 py-6">
+          {/* Custom SVG to match the colorful logo in the design */}
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#FF0000" />
+            <path d="M2 17L12 22L22 17" stroke="#FF0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M2 12L12 17L22 12" stroke="#8B5CF6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+          <span className="font-bold text-[17px] tracking-wide text-gray-900">MY PHOTOS</span>
         </div>
 
         {/* Action Buttons */}
-        <div className="px-4 space-y-3 mb-6">
-          <button className="w-full flex items-center justify-center gap-2 border border-gray-300 rounded-full py-2 text-sm font-medium hover:bg-gray-50 transition-colors">
+        <div className="px-4 space-y-3 mb-8">
+          <button className="w-full flex items-center justify-center gap-2 border border-gray-200 rounded-full py-2.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 transition-colors">
             <Plus size={16} /> Upload Photos
           </button>
-          <button className="w-full flex items-center justify-center gap-2 border border-gray-300 rounded-full py-2 text-sm font-medium hover:bg-gray-50 transition-colors">
+          <button className="w-full flex items-center justify-center gap-2 border border-gray-200 rounded-full py-2.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 transition-colors">
             <Folder size={16} /> Create Album
           </button>
         </div>
@@ -35,7 +40,7 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
               <button
                 key={item.id}
                 onClick={() => setActiveTab(item.id)}
-                className={`w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
+                className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-[14px] font-medium transition-colors ${
                   isActive 
                     ? 'bg-brand-light text-brand' 
                     : 'text-gray-600 hover:bg-gray-50'
@@ -51,17 +56,17 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
 
       {/* Storage Meter */}
       <div className="p-4 m-4 border border-gray-200 rounded-xl">
-        <div className="flex justify-between items-center text-sm mb-2">
+        <div className="flex justify-between items-center text-sm mb-3">
           <span className="flex items-center gap-2 text-gray-600 font-medium">
-            <CloudUpload size={16} /> Storage
+            <HardDrive size={16} /> Storage
           </span>
-          <span className="font-bold text-sm">34.2 MB</span>
+          <span className="font-bold text-[13px] text-gray-900">34.2 MB</span>
         </div>
         {/* Progress Bar */}
         <div className="w-full bg-gray-100 rounded-full h-1.5 mb-3">
           <div className="bg-orange-500 h-1.5 rounded-full" style={{ width: '35%' }}></div>
         </div>
-        <div className="flex justify-between text-xs text-gray-400">
+        <div className="flex justify-between text-[11px] text-gray-400 font-medium">
           <span>11 media saved</span>
           <span>3 videos</span>
         </div>
