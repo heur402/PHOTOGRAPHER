@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Sidebar from './component/Sidebar';
 import TopBar from './component/TopBar';
-import PhotosView from './PhotosView';
+import PhotosView from './component/PhotosView';
 import AlbumsView from './AlbumsView';
 import UploadModal from './UploadModal';
 
