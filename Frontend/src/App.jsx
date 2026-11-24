@@ -1,22 +1,21 @@
-import { useState } from 'react';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 
 const App = () => {
-  // Frontend-only authentication state
-  // Set to false initially so it shows the login page first
-  const [isAuthenticated, setIsAuthenticated] = useState(false); 
-
   return (
-    <>
-      {!isAuthenticated ? (
-        // Pass a function to flip the state to true when they sign in/up
-        <LoginPage onAuthSuccess={() => setIsAuthenticated(true)} />
-      ) : (
-        // Show the dashboard layout
-        <HomePage />
-      )}
-    </>
+    <BrowserRouter>
+      <Routes>
+        {/* The default route shows the HomePage (Dashboard) */}
+        <Route path="/" element={<HomePage />} />
+        
+        {/* The login route */}
+        <Route path="/login" element={<LoginPage />} />
+        
+        {/* Catch-all: redirect unknown URLs to home */}
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
   );
 };
 
