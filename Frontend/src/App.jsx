@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import LoginPage from './component/LoginPage';
-import HomePage from './component/HomePage';
+import LoginPage from './pages/LoginPage';
+import HomePage from './pages/HomePage';
 
 const App = () => {
   // Frontend-only authentication state
