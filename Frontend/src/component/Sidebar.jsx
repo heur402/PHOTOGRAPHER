@@ -1,3 +1,4 @@
+import React from 'react';
 import { Image, Star, Folder, Trash2, Plus, HardDrive } from 'lucide-react';
 
 const Sidebar = ({ activeTab, setActiveTab }) => {
@@ -9,21 +10,10 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
   ];
 
   return (
-    <aside className="w-[260px] h-screen border-r border-gray-100 bg-white flex flex-col justify-between fixed left-0 top-0 z-20">
+    <aside className="w-[260px] h-screen border-r border-gray-200 bg-white flex flex-col justify-between fixed left-0 top-[72px] z-20">
       <div>
-        {/* Logo Area */}
-        <div className="flex items-center gap-2.5 px-6 py-6">
-          {/* Custom SVG to match the colorful logo in the design */}
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="#FF0000" />
-            <path d="M2 17L12 22L22 17" stroke="#FF0000" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M2 12L12 17L22 12" stroke="#8B5CF6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-          <span className="font-bold text-[17px] tracking-wide text-gray-900">MY PHOTOS</span>
-        </div>
-
         {/* Action Buttons */}
-        <div className="px-4 space-y-3 mb-8">
+        <div className="px-4 space-y-3 pt-6 mb-6">
           <button className="w-full flex items-center justify-center gap-2 border border-gray-200 rounded-full py-2.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 transition-colors">
             <Plus size={16} /> Upload Photos
           </button>
