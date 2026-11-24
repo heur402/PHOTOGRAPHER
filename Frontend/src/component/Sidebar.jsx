@@ -1,6 +1,7 @@
 import { Image, Star, Folder, Trash2, Plus, HardDrive } from 'lucide-react';
 
-const Sidebar = ({ activeTab, setActiveTab }) => {
+// Accept the new props here
+const Sidebar = ({ activeTab, setActiveTab, onUploadClick, onCreateAlbumClick }) => {
   const navItems = [
     { id: 'photos', label: 'Photos & Videos', icon: <Image size={20} /> },
     { id: 'favorites', label: 'Favorites', icon: <Star size={20} /> },
@@ -9,15 +10,23 @@ const Sidebar = ({ activeTab, setActiveTab }) => {
   ];
 
   return (
-    // Changed h-screen to calc(100vh-72px) so it fits exactly under the TopBar
     <aside className="w-[260px] h-[calc(100vh-72px)] border-r border-gray-200 bg-white flex flex-col justify-between fixed left-0 top-[72px] z-20">
       <div>
         {/* Action Buttons */}
         <div className="px-4 space-y-3 pt-6 mb-6">
-          <button className="w-full flex items-center justify-center gap-2 border border-gray-200 rounded-full py-2.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 transition-colors">
+          {/* Attach onClick to Upload */}
+          <button 
+            onClick={onUploadClick}
+            className="w-full flex items-center justify-center gap-2 border border-gray-200 rounded-full py-2.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 transition-colors"
+          >
             <Plus size={16} /> Upload Photos
           </button>
-          <button className="w-full flex items-center justify-center gap-2 border border-gray-200 rounded-full py-2.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 transition-colors">
+          
+          {/* Attach onClick to Create Album */}
+          <button 
+            onClick={onCreateAlbumClick}
+            className="w-full flex items-center justify-center gap-2 border border-gray-200 rounded-full py-2.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 transition-colors"
+          >
             <Folder size={16} /> Create Album
           </button>
         </div>
