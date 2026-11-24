@@ -4,7 +4,7 @@ import TopBar from '../component/TopBar';
 import PhotosView from '../component/PhotosView';
 import AlbumsView from '../component/AlbumsView';
 import UploadModal from '../component/UploadModal';
-import CreateAlbumModal from '../component/CreateAlbumModal'; // Import the new modal
+import CreateAlbumModal from '../component/CreateAlbumModal'; 
 
 const HomePage = () => {
   const [activeTab, setActiveTab] = useState('photos');
