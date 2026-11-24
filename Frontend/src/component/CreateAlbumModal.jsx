@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { X, FolderPlus } from 'lucide-react';
 
 const CreateAlbumModal = ({ isOpen, onClose, onCreate }) => {
   const [albumName, setAlbumName] = useState('');
+  const [description, setDescription] = useState('');
 
   if (!isOpen) return null;
 
@@ -10,11 +11,12 @@ const CreateAlbumModal = ({ isOpen, onClose, onCreate }) => {
     e.preventDefault();
     if (albumName.trim() === '') return;
     
-    // Pass the new album name back to the parent component
-    onCreate(albumName);
+    // Pass the new album data back to the parent component
+    onCreate({ name: albumName, description });
     
     // Reset form and close
     setAlbumName('');
+    setDescription('');
     onClose();
   };
 
@@ -25,7 +27,7 @@ const CreateAlbumModal = ({ isOpen, onClose, onCreate }) => {
     >
       <div 
         className="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden transform scale-100 transition-transform"
-        onClick={e => e.stopPropagation()} // Prevent click from closing when clicking inside
+        onClick={e => e.stopPropagation()}
       >
         
         {/* Header */}
@@ -46,16 +48,32 @@ const CreateAlbumModal = ({ isOpen, onClose, onCreate }) => {
 
         {/* Body */}
         <form onSubmit={handleSubmit}>
-          <div className="p-6">
-            <label className="block text-sm font-medium text-gray-700 mb-2">Album Name</label>
-            <input 
-              type="text" 
-              value={albumName}
-              onChange={(e) => setAlbumName(e.target.value)}
-              placeholder="e.g., Summer Vacation, Family, Work..."
-              className="w-full px-4 py-3 rounded-lg bg-[#F3F4F6] border-none outline-none focus:ring-2 focus:ring-gray-900 transition-all text-gray-900 placeholder-gray-500"
-              autoFocus
-            />
+          <div className="p-6 space-y-4">
+            {/* Album Name Input */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Album Name <span className="text-brand">*</span></label>
+              <input 
+                type="text" 
+                value={albumName}
+                onChange={(e) => setAlbumName(e.target.value)}
+                placeholder="e.g., Summer Vacation, Family, Work..."
+                className="w-full px-4 py-3 rounded-lg bg-[#F3F4F6] border-none outline-none focus:ring-2 focus:ring-gray-900 transition-all text-gray-900 placeholder-gray-500"
+                autoFocus
+                required
+              />
+            </div>
+
+            {/* Description Textarea */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Description <span className="text-gray-400 font-normal">(Optional)</span></label>
+              <textarea 
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder="Add a short description for this album..."
+                rows="3"
+                className="w-full px-4 py-3 rounded-lg bg-[#F3F4F6] border-none outline-none focus:ring-2 focus:ring-gray-900 transition-all text-gray-900 placeholder-gray-500 resize-none"
+              />
+            </div>
           </div>
 
           {/* Footer */}
