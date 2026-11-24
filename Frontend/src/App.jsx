@@ -4,11 +4,21 @@ import TopBar from './component/TopBar';
 import PhotosView from './component/PhotosView';
 import AlbumsView from './component/AlbumsView';
 import UploadModal from './component/UploadModal';
+import LoginPage from './pages/LoginPage'; // Import the new Login Page
 
 const App = () => {
+  // State to track authentication (default to false to show login first)
+  const [isAuthenticated, setIsAuthenticated] = useState(false); 
+  
   const [activeTab, setActiveTab] = useState('photos');
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
 
+  // If not logged in, show the Login Page
+  if (!isAuthenticated) {
+    return <LoginPage onLogin={() => setIsAuthenticated(true)} />;
+  }
+
+  // Render logic for the Dashboard
   const renderContent = () => {
     switch (activeTab) {
       case 'photos': return <PhotosView />;
@@ -17,6 +27,7 @@ const App = () => {
     }
   };
 
+  // If logged in, show the App Dashboard
   return (
     <div className="min-h-screen bg-[#FAFAFA] font-sans text-gray-900">
       
