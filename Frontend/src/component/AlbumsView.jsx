@@ -1,6 +1,6 @@
 import { Plus } from 'lucide-react';
 
-const AlbumsView = () => {
+const AlbumsView = ({ onCreateAlbumClick }) => {
   const albums = [
     { title: 'Paintings', count: 1, cover: 'https://images.unsplash.com/photo-1579546929518-9e396f3cc809?q=80&w=600&auto=format&fit=crop' },
     { title: 'Foods', count: 1, cover: 'https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600&auto=format&fit=crop' },
