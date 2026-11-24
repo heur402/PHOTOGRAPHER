@@ -1,9 +1,9 @@
-import { useState } from 'react';
-import Sidebar from './component/Sidebar';
-import TopBar from './component/TopBar';
-import PhotosView from './component/PhotosView';
-import AlbumsView from './component/AlbumsView';
-import UploadModal from './component/UploadModal';
+import React, { useState } from 'react';
+import Sidebar from './Sidebar';
+import TopBar from './TopBar';
+import PhotosView from './PhotosView';
+import AlbumsView from './AlbumsView';
+import UploadModal from './UploadModal';
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('photos');
@@ -19,12 +19,15 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-[#FAFAFA] font-sans text-gray-900">
-      <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
       
-      {/* Make sure to update TopBar.jsx to accept this prop! */}
+      {/* TopBar is fixed at the top */}
       <TopBar onUploadClick={() => setIsUploadModalOpen(true)} />
       
-      <main className="ml-[260px] p-8">
+      {/* Sidebar is fixed below the TopBar */}
+      <Sidebar activeTab={activeTab} setActiveTab={setActiveTab} />
+      
+      {/* Main content is pushed down and to the right */}
+      <main className="ml-[260px] pt-[96px] px-8 pb-8">
         {renderContent()}
       </main>
 
