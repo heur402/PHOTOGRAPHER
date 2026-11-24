@@ -3,7 +3,7 @@ import Sidebar from './component/Sidebar';
 import TopBar from './component/TopBar';
 import PhotosView from './component/PhotosView';
 import AlbumsView from './component/AlbumsView';
-import UploadModal from './UploadModal';
+import UploadModal from './component/UploadModal';
 
 const App = () => {
   const [activeTab, setActiveTab] = useState('photos');
