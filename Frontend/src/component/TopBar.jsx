@@ -1,4 +1,3 @@
-import React from 'react';
 import { Search, Sparkles, Upload } from 'lucide-react';
 
 const TopBar = ({ onUploadClick }) => {
@@ -33,7 +32,7 @@ const TopBar = ({ onUploadClick }) => {
       <div className="flex items-center gap-4 w-[236px] justify-end">
         <button 
           onClick={onUploadClick}
-          className="flex items-center gap-2 bg-brand text-white px-5 py-2.5 rounded-full text-[14px] font-medium hover:bg-red-700 transition-colors shadow-sm"
+          className="flex items-center gap-2 bg-red-500 text-white px-5 py-2.5 rounded-full text-[14px] font-medium hover:bg-red-700 transition-colors shadow-sm"
         >
           <Upload size={16} /> Upload
         </button>
