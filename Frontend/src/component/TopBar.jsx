@@ -21,12 +21,12 @@ const TopBar = ({ onUploadClick }) => {
 
             {/* Right Side Actions */}
             <div className="flex items-center gap-4 ml-8">
-                <button
-                    onClick={onUploadClick}
-                    className="flex items-center gap-2 bg-brand text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-red-700 transition-colors"
-                >
-                    <Upload size={16} /> Upload
-                </button>
+               <button
+    onClick={onUploadClick}
+    className="flex items-center gap-2 bg-red-600 text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-red-700 transition-colors"
+>
+    <Upload size={16} /> Upload
+</button>
                 <div className="w-9 h-9 bg-orange-200 text-orange-800 rounded-full flex items-center justify-center font-bold text-sm cursor-pointer">
                     DK
                 </div>
