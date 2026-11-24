@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Sidebar from './component/Sidebar';
 import TopBar from './component/TopBar';
 import PhotosView from './component/PhotosView';
-import AlbumsView from './AlbumsView';
+import AlbumsView from './component/AlbumsView';
 import UploadModal from './UploadModal';
 
 const App = () => {
