@@ -33,7 +33,7 @@ const CreateAlbumModal = ({ isOpen, onClose, onCreate }) => {
         {/* Header */}
         <div className="p-6 flex justify-between items-start border-b border-gray-100">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-brand-light flex items-center justify-center text-brand">
+            <div className="w-10 h-10 rounded-full bg-#FFF0F0 flex items-center justify-center text-brand">
               <FolderPlus size={20} />
             </div>
             <div>

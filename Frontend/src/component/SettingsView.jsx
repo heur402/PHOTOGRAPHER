@@ -30,7 +30,7 @@ const SettingsView = () => {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium whitespace-nowrap transition-colors ${
                   activeTab === tab.id
-                    ? 'bg-brand-light text-brand'
+                    ? 'bg-#FFF0F0 text-brand'
                     : 'text-gray-600 hover:bg-gray-100'
                 }`}
               >
