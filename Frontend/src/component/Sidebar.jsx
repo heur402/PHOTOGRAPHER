@@ -12,7 +12,7 @@ const Sidebar = ({ activeTab, setActiveTab, isOpen, setIsOpen }) => {
     <>
       {/* Mobile Overlay */}
       {isOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black/50 z-40 lg:hidden"
           onClick={() => setIsOpen(false)}
         />
@@ -31,7 +31,7 @@ const Sidebar = ({ activeTab, setActiveTab, isOpen, setIsOpen }) => {
         `}
       >
         <div>
-          {/* Mobile Close Button */}
+          { }
           <div className="flex justify-end p-4 lg:hidden md:hidden">
             <button onClick={() => setIsOpen(false)} className="text-gray-500 hover:text-gray-800 bg-gray-50 rounded-full p-2">
               <X size={20} />
@@ -48,7 +48,7 @@ const Sidebar = ({ activeTab, setActiveTab, isOpen, setIsOpen }) => {
             </button>
           </div>
 
-          {/* Navigation Links */}
+          { }
           <nav className="px-3 space-y-1">
             {navItems.map((item) => {
               const isActive = activeTab === item.id;
