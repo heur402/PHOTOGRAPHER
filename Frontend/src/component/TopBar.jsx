@@ -71,12 +71,6 @@ const TopBar = ({ onUploadClick, onMenuClick }) => {
               <div className="fixed inset-0 z-40" onClick={() => setIsProfileOpen(false)}></div>
 
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100 py-1 z-50 animate-fade-in">
-                <button
-                  onClick={() => { navigate('/setting'); setIsProfileOpen(false); }}
-                  className="w-full flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
-                >
-                  <Settings size={16} /> Settings
-                </button>
                 <div className="h-px bg-gray-100 my-1"></div>
                 <button 
                   onClick={() => navigate('/login')}
