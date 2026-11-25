@@ -1,10 +1,28 @@
 import { X, Star, FolderPlus, Trash2 } from 'lucide-react';
 
 const SelectionActionBar = ({ selectedCount, onClear, onFavorite, onAddToAlbum, onMoveToTrash }) => {
+  // If nothing is selected, don't render the bar at all
   if (selectedCount === 0) return null;
 
   return (
-    <div className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40 animate-slide-up">
+    <div 
+      className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40"
+      // Inline animation to slide up smoothly without needing a custom tailwind config
+      style={{ animation: 'slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards' }}
+    >
+      {/* 
+        Adding a <style> tag here to define the keyframe locally. 
+        This keeps your tailwind.config.js completely untouched.
+      */}
+      <style>
+        {`
+          @keyframes slideUp {
+            0% { opacity: 0; transform: translate(-50%, 20px); }
+            100% { opacity: 1; transform: translate(-50%, 0); }
+          }
+        `}
+      </style>
+
       <div className="bg-white rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-gray-100 flex items-center px-2 py-2 gap-1">
         
         {/* Clear Selection */}
