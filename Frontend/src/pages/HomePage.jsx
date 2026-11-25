@@ -20,8 +20,6 @@ const HomePage = () => {
     // Show settings if on /setting route
     if (location.pathname === '/setting') {
       return <SettingsView />;
-    } else {
-      return location.pathname = '/'
     }
 
     switch (activeTab) {
@@ -29,6 +27,8 @@ const HomePage = () => {
         return <PhotosView />;
       case 'albums': 
         return <AlbumsView onCreateAlbumClick={() => setIsCreateAlbumModalOpen(true)} />;
+      case 'setting':
+        return <SettingsView />
       default: 
         return <PhotosView />; 
     }
