@@ -6,7 +6,7 @@ import PhotosView from '../component/PhotosView';
 import AlbumsView from '../component/AlbumsView';
 import UploadModal from '../component/UploadModal';
 import CreateAlbumModal from '../component/CreateAlbumModal';
-import SettingsView from '../component/SettingsView';
+import SettingsView from '../component/SettingsView'; // Import
 
 const HomePage = () => {
   const [activeTab, setActiveTab] = useState('photos');
@@ -17,6 +17,7 @@ const HomePage = () => {
   const location = useLocation();
 
   const renderContent = () => {
+    // Show settings if on /setting route
     if (location.pathname === '/setting') {
       return <SettingsView />;
     }
