@@ -20,6 +20,8 @@ const HomePage = () => {
     // Show settings if on /setting route
     if (location.pathname === '/setting') {
       return <SettingsView />;
+    } else {
+      return 
     }
 
     switch (activeTab) {
