@@ -6,16 +6,10 @@ const App = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* The default route shows the HomePage (Dashboard) */}
         <Route path="/" element={<HomePage />} />
-        
-        {/* The login route */}
         <Route path="/login" element={<LoginPage />} />
-        
-        {/* The settings route */}
+        {/* Route for settings */}
         <Route path="/setting" element={<HomePage />} />
-
-        {/* Catch-all: redirect unknown URLs to home */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
