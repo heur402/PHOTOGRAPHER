@@ -12,6 +12,9 @@ const App = () => {
         {/* The login route */}
         <Route path="/login" element={<LoginPage />} />
         
+        {/* The settings route */}
+        <Route path="/setting" element={<HomePage />} />
+
         {/* Catch-all: redirect unknown URLs to home */}
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
