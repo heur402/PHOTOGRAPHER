@@ -1,4 +1,4 @@
-import { Image, Star, Folder, Trash2, Plus, HardDrive, X } from 'lucide-react';
+import { Image, Star, Folder, Trash2, Plus, HardDrive, X, Settings } from 'lucide-react';
 
 const Sidebar = ({ activeTab, setActiveTab, isOpen, setIsOpen, onUploadClick, onCreateAlbumClick }) => {
   const navItems = [
@@ -6,6 +6,7 @@ const Sidebar = ({ activeTab, setActiveTab, isOpen, setIsOpen, onUploadClick, on
     { id: 'favorites', label: 'Favorites', icon: <Star size={20} /> },
     { id: 'albums', label: 'Albums', icon: <Folder size={20} /> },
     { id: 'trash', label: 'Trash', icon: <Trash2 size={20} /> },
+    { id: 'setting', label: 'Setting', icon: <Settings size={20} /> },
   ];
 
   return (
