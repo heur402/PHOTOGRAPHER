@@ -10,7 +10,7 @@ const Sidebar = ({ activeTab, setActiveTab, isOpen, setIsOpen }) => {
 
   return (
     <>
-      {/* Mobile Overlay (Dark backdrop when menu is open) */}
+      {/* Mobile Overlay */}
       {isOpen && (
         <div 
           className="fixed inset-0 bg-black/50 z-40 lg:hidden"
@@ -18,10 +18,13 @@ const Sidebar = ({ activeTab, setActiveTab, isOpen, setIsOpen }) => {
         />
       )}
 
-      {/* Sidebar Container */}
+      {/* Sidebar Container 
+          Changed h-[calc(...)] to top-[72px] and bottom-0 to ensure it perfectly 
+          stretches to the bottom of the screen regardless of mobile browser bars.
+      */}
       <aside 
         className={`
-          fixed top-[72px] left-0 h-[calc(100vh-72px)] bg-white border-r border-gray-200 z-50 flex flex-col justify-between transition-all duration-300
+          fixed top-[72px] bottom-0 left-0 bg-white border-r border-gray-200 z-50 flex flex-col justify-between transition-all duration-300 overflow-y-auto
           lg:w-[260px] lg:translate-x-0
           md:w-[80px] md:translate-x-0
           w-[260px] ${isOpen ? 'translate-x-0' : '-translate-x-full'}
@@ -30,13 +33,13 @@ const Sidebar = ({ activeTab, setActiveTab, isOpen, setIsOpen }) => {
         <div>
           {/* Mobile Close Button */}
           <div className="flex justify-end p-4 lg:hidden md:hidden">
-            <button onClick={() => setIsOpen(false)} className="text-gray-500 hover:text-gray-800">
-              <X size={24} />
+            <button onClick={() => setIsOpen(false)} className="text-gray-500 hover:text-gray-800 bg-gray-50 rounded-full p-2">
+              <X size={20} />
             </button>
           </div>
 
           {/* Action Buttons */}
-          <div className="px-4 space-y-3 pt-6 mb-6">
+          <div className="px-4 space-y-3 pt-2 md:pt-6 mb-6">
             <button className="w-full flex items-center justify-center gap-2 border border-gray-200 rounded-full py-2.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 transition-colors">
               <Plus size={16} /> <span className="md:hidden lg:block">Upload Photos</span>
             </button>
@@ -54,9 +57,9 @@ const Sidebar = ({ activeTab, setActiveTab, isOpen, setIsOpen }) => {
                   key={item.id}
                   onClick={() => {
                     setActiveTab(item.id);
-                    setIsOpen(false); // Close mobile menu on click
+                    setIsOpen(false); // Close menu on mobile
                   }}
-                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-[14px] font-medium transition-colors ${
+                  className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg text-[14px] font-medium transition-colors ${
                     isActive 
                       ? 'bg-brand-light text-brand' 
                       : 'text-gray-600 hover:bg-gray-50'
@@ -70,13 +73,13 @@ const Sidebar = ({ activeTab, setActiveTab, isOpen, setIsOpen }) => {
           </nav>
         </div>
 
-        {/* Storage Meter (Hidden on Tablet to save space) */}
-        <div className="p-4 m-4 border border-gray-200 rounded-xl md:hidden lg:block">
+        {/* Storage Meter - HIDDEN ON MOBILE (md:hidden), Visible on Tablet/Desktop */}
+        <div className="hidden md:block p-4 m-4 border border-gray-200 rounded-xl">
           <div className="flex justify-between items-center text-sm mb-3">
             <span className="flex items-center gap-2 text-gray-600 font-medium">
-              <HardDrive size={16} /> Storage
+              <HardDrive size={16} /> <span className="lg:block md:hidden">Storage</span>
             </span>
-            <span className="font-bold text-[13px] text-gray-900">34.2 MB</span>
+            <span className="font-bold text-[13px] text-gray-900 lg:block md:hidden">34.2 MB</span>
           </div>
           <div className="w-full bg-gray-100 rounded-full h-1.5 mb-3">
             <div className="bg-orange-500 h-1.5 rounded-full" style={{ width: '35%' }}></div>
