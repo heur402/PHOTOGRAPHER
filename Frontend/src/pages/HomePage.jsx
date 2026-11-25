@@ -21,7 +21,7 @@ const HomePage = () => {
     if (location.pathname === '/setting') {
       return <SettingsView />;
     } else {
-      return 
+      return location.pathname = '/'
     }
 
     switch (activeTab) {
