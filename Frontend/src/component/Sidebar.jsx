@@ -1,6 +1,6 @@
 import { Image, Star, Folder, Trash2, Plus, HardDrive, X } from 'lucide-react';
 
-const Sidebar = ({ activeTab, setActiveTab, isOpen, setIsOpen }) => {
+const Sidebar = ({ activeTab, setActiveTab, isOpen, setIsOpen, onUploadClick, onCreateAlbumClick }) => {
   const navItems = [
     { id: 'photos', label: 'Photos & Videos', icon: <Image size={20} /> },
     { id: 'favorites', label: 'Favorites', icon: <Star size={20} /> },
@@ -38,10 +38,16 @@ const Sidebar = ({ activeTab, setActiveTab, isOpen, setIsOpen }) => {
 
           {/* Action Buttons - Desktop Only */}
           <div className="hidden lg:block px-4 space-y-3 pt-6 mb-6">
-            <button className="w-full flex items-center justify-center gap-2 border border-gray-200 rounded-full py-2.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 transition-colors">
+            <button
+              onClick={onUploadClick}
+              className="w-full flex items-center justify-center gap-2 border border-gray-200 rounded-full py-2.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 transition-colors"
+            >
               <Plus size={16} /> Upload Photos
             </button>
-            <button className="w-full flex items-center justify-center gap-2 border border-gray-200 rounded-full py-2.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 transition-colors">
+            <button
+              onClick={onCreateAlbumClick}
+              className="w-full flex items-center justify-center gap-2 border border-gray-200 rounded-full py-2.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 transition-colors"
+            >
               <Folder size={16} /> Create Album
             </button>
           </div>
