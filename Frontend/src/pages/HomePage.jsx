@@ -10,8 +10,6 @@ const HomePage = () => {
   const [activeTab, setActiveTab] = useState('photos');
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
   const [isCreateAlbumModalOpen, setIsCreateAlbumModalOpen] = useState(false);
-  
-  // New state for mobile menu
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const renderContent = () => {
@@ -24,14 +22,12 @@ const HomePage = () => {
 
   return (
     <div className="h-screen w-full overflow-hidden bg-[#FAFAFA] font-sans text-gray-900">
-      
-      {/* Pass the mobile menu toggle to TopBar */}
+
       <TopBar 
         onUploadClick={() => setIsUploadModalOpen(true)} 
         onMenuClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
       />
-      
-      {/* Pass the mobile state to Sidebar */}
+
       <Sidebar 
         activeTab={activeTab} 
         setActiveTab={setActiveTab} 
@@ -39,8 +35,13 @@ const HomePage = () => {
         setIsOpen={setIsMobileMenuOpen}
       />
       
-      {/* Update main content margins for responsive layout */}
-      <main className="lg:ml-[260px] md:ml-[80px] ml-0 h-[calc(100vh-72px)] mt-[72px] overflow-y-auto transition-all duration-300">
+      {/* 
+        Main Content area adapts to the screen size:
+        - Mobile: ml-0 (Sidebar is hidden)
+        - Tablet: md:ml-[80px] (Leaves room for the icon rail)
+        - Desktop: lg:ml-[260px] (Leaves room for the full sidebar)
+      */}
+      <main className="ml-0 md:ml-[80px] lg:ml-[260px] h-[calc(100vh-72px)] mt-[72px] overflow-y-auto transition-all duration-300">
         <div className="px-4 md:px-6 lg:px-8 py-6 lg:py-8">
           {renderContent()}
         </div>
