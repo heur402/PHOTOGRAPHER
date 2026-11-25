@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { User, Bell, Shield, Palette, HardDrive, Check } from 'lucide-react';
 
 const SettingsView = () => {
