@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { Play, Image as ImageIcon, Video, Star, Check } from 'lucide-react';
-import SelectionActionBar from './SelectionActionBar'; // Import the new component
+import SelectionActionBar from './SelectionActionBar'; 
 
 const PhotosView = () => {
   const [activeFilter, setActiveFilter] = useState('All');
-  const [selectedIds, setSelectedIds] = useState([]); // Track selected photos
+  const [selectedIds, setSelectedIds] = useState([]); 
 
   // Mock Data
   const groups = [
@@ -30,21 +30,35 @@ const PhotosView = () => {
 
   // Toggle a single photo
   const toggleSelection = (e, id) => {
-    e.stopPropagation();
+    if (e) e.stopPropagation();
     setSelectedIds(prev => 
       prev.includes(id) ? prev.filter(item => item !== id) : [...prev, id]
     );
   };
 
-  // Toggle an entire date group (Select All)
-  const toggleGroupSelection = (groupItems) => {
+  // Toggle an entire date group (Only affects that group)
+  const toggleGroupSelection = (e, groupItems) => {
+    e.stopPropagation();
     const groupIds = groupItems.map(item => item.id);
     const allSelected = groupIds.every(id => selectedIds.includes(id));
     
     if (allSelected) {
+      // If all are selected, deselect only this group
       setSelectedIds(prev => prev.filter(id => !groupIds.includes(id)));
     } else {
+      // Otherwise, select all in this group
       setSelectedIds(prev => [...new Set([...prev, ...groupIds])]);
+    }
+  };
+
+  // Handle clicking on the image itself
+  const handleImageClick = (item) => {
+    if (selectedIds.length > 0) {
+      // If in selection mode, clicking the image toggles selection
+      toggleSelection(null, item.id);
+    } else {
+      // TODO: Open MediaViewer here
+      console.log("Open viewer for image:", item.id);
     }
   };
 
@@ -90,12 +104,12 @@ const PhotosView = () => {
             {/* Date Header */}
             <div className="flex items-center gap-3 mb-4">
               <button 
-                onClick={() => toggleGroupSelection(group.items)}
-                className={`w-4 h-4 rounded-full border-2 flex items-center justify-center transition-colors ${
-                  isGroupSelected ? 'bg-brand border-brand' : 'border-gray-300 hover:border-gray-400'
+                onClick={(e) => toggleGroupSelection(e, group.items)}
+                className={`w-5 h-5 rounded-full border-2 flex items-center justify-center transition-colors ${
+                  isGroupSelected ? 'bg-brand border-brand' : 'border-gray-300 hover:border-gray-400 bg-white'
                 }`}
               >
-                {isGroupSelected && <Check size={10} className="text-white" />}
+                {isGroupSelected && <Check size={12} className="text-white" />}
               </button>
               <h2 className="text-base font-semibold text-gray-700">
                 {group.date} <span className="text-gray-400 font-normal text-sm ml-1">({group.count})</span>
@@ -109,6 +123,7 @@ const PhotosView = () => {
                 return (
                   <div 
                     key={item.id} 
+                    onClick={() => handleImageClick(item)}
                     className={`group relative aspect-square rounded-xl overflow-hidden cursor-pointer bg-gray-200 transition-all ${
                       isSelected ? 'ring-4 ring-brand ring-offset-2' : ''
                     }`}
@@ -121,7 +136,7 @@ const PhotosView = () => {
                     
                     {isSelected && <div className="absolute inset-0 bg-black/20"></div>}
 
-                    {/* Checkbox (Top Left) */}
+                    {/* Checkbox (Top Left) - Only visible on hover or if selected */}
                     <button 
                       onClick={(e) => toggleSelection(e, item.id)}
                       className={`absolute top-3 left-3 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all z-10 ${
