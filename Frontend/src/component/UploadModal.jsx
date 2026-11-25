@@ -64,7 +64,7 @@ const UploadModal = ({ isOpen, onClose }) => {
             onDrop={handleDrop}
             onClick={() => inputRef.current?.click()}
             className={`border-2 border-dashed rounded-xl p-10 text-center cursor-pointer transition-colors ${
-              isDragging ? 'border-brand bg-red-50' : 'border-gray-300 hover:border-brand hover:bg-gray-50'
+              isDragging ? 'border-#FF0000 bg-red-50' : 'border-gray-300 hover:border-#FF0000 hover:bg-gray-50'
             }`}
           >
             <input
