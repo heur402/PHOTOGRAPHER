@@ -1,26 +1,32 @@
 import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import Sidebar from '../component/Sidebar';
 import TopBar from '../component/TopBar';
 import PhotosView from '../component/PhotosView';
 import AlbumsView from '../component/AlbumsView';
 import UploadModal from '../component/UploadModal';
 import CreateAlbumModal from '../component/CreateAlbumModal';
+import SettingsView from '../component/SettingsView';
 
 const HomePage = () => {
   const [activeTab, setActiveTab] = useState('photos');
   const [isUploadModalOpen, setIsUploadModalOpen] = useState(false);
   const [isCreateAlbumModalOpen, setIsCreateAlbumModalOpen] = useState(false);
-
-  // State for mobile sidebar toggle
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
+  const location = useLocation();
+
   const renderContent = () => {
+    if (location.pathname === '/setting') {
+      return <SettingsView />;
+    }
+
     switch (activeTab) {
-      case 'photos':
+      case 'photos': 
         return <PhotosView />;
-      case 'albums':
+      case 'albums': 
         return <AlbumsView onCreateAlbumClick={() => setIsCreateAlbumModalOpen(true)} />;
-      default:
+      default: 
         return <PhotosView />; 
     }
   };
@@ -32,13 +38,11 @@ const HomePage = () => {
   return (
     <div className="h-screen w-full overflow-hidden bg-[#FAFAFA] font-sans text-gray-900">
 
-      {/* TopBar needs a way to open the mobile sidebar - passing setIsSidebarOpen */}
       <TopBar 
         onUploadClick={() => setIsUploadModalOpen(true)} 
         onMenuClick={() => setIsSidebarOpen(true)} 
       />
 
-      {/* Sidebar gets the modal triggers AND the mobile state */}
       <Sidebar 
         activeTab={activeTab} 
         setActiveTab={setActiveTab} 
@@ -56,7 +60,7 @@ const HomePage = () => {
 
       <UploadModal
         isOpen={isUploadModalOpen}
-        onClose={() => setIsUploadModalOpen(false)}
+        onClose={() => setIsUploadModalOpen(false)} 
       />
 
       <CreateAlbumModal 
