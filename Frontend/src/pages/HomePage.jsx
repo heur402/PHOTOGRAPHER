@@ -58,7 +58,7 @@ const HomePage = () => {
         </div>
       </main>
 
-      <UploadModal
+      <UploadModal 
         isOpen={isUploadModalOpen} 
         onClose={() => setIsUploadModalOpen(false)} 
       />
