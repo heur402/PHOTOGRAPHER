@@ -21,13 +21,13 @@ const Sidebar = ({ activeTab, setActiveTab, isOpen, setIsOpen }) => {
       {/* Sidebar Container */}
       <aside 
         className={`
-          fixed top-[72px] bottom-0 left-0 bg-white border-r border-gray-200 z-50 flex flex-col transition-all duration-300
+          fixed top-[72px] bottom-0 left-0 bg-white border-r border-gray-200 z-50 flex flex-col justify-between transition-all duration-300
           lg:w-[260px] lg:translate-x-0
           md:w-[80px] md:translate-x-0
           w-[280px] ${isOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'}
         `}
       >
-        <div className="flex flex-col h-full">
+        <div className="flex flex-col h-full overflow-y-auto">
           {/* Mobile Header with Close Button */}
           <div className="flex justify-between items-center p-5 lg:hidden md:hidden border-b border-gray-100">
             <span className="font-bold text-lg text-gray-900">Menu</span>
@@ -36,7 +36,7 @@ const Sidebar = ({ activeTab, setActiveTab, isOpen, setIsOpen }) => {
             </button>
           </div>
 
-          {/* Action Buttons - HIDDEN ON MOBILE AND TABLET (Only on Desktop) */}
+          {/* Action Buttons - Desktop Only */}
           <div className="hidden lg:block px-4 space-y-3 pt-6 mb-6">
             <button className="w-full flex items-center justify-center gap-2 border border-gray-200 rounded-full py-2.5 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 transition-colors">
               <Plus size={16} /> Upload Photos
@@ -55,7 +55,7 @@ const Sidebar = ({ activeTab, setActiveTab, isOpen, setIsOpen }) => {
                   key={item.id}
                   onClick={() => {
                     setActiveTab(item.id);
-                    setIsOpen(false); // Close menu on mobile
+                    setIsOpen(false);
                   }}
                   className={`w-full flex items-center gap-4 px-4 py-3.5 rounded-xl text-[15px] font-medium transition-colors ${
                     isActive 
@@ -71,19 +71,22 @@ const Sidebar = ({ activeTab, setActiveTab, isOpen, setIsOpen }) => {
           </nav>
         </div>
 
-        {/* Storage Meter - HIDDEN ON MOBILE AND TABLET (Only on Desktop) */}
-        <div className="hidden lg:block p-4 m-4 border border-gray-200 rounded-xl shrink-0">
-          <div className="flex justify-between items-center text-sm mb-3">
+        {/* Storage Meter - VISIBLE ON ALL DEVICES but styled for each */}
+        <div className="p-4 m-3 border border-gray-200 rounded-xl shrink-0 bg-gray-50/50">
+          <div className="flex justify-between items-center text-sm mb-2">
             <span className="flex items-center gap-2 text-gray-600 font-medium">
-              <HardDrive size={16} /> Storage
+              <HardDrive size={16} />
+              {/* Hide text on tablet, show on mobile and desktop */}
+              <span className="md:hidden lg:block">Storage</span>
             </span>
-            <span className="font-bold text-[13px] text-gray-900">34.2 MB</span>
+            <span className="font-bold text-[12px] md:text-[11px] lg:text-[13px] text-gray-900">34.2 MB</span>
           </div>
-          <div className="w-full bg-gray-100 rounded-full h-1.5 mb-3">
+          <div className="w-full bg-gray-200 rounded-full h-1.5 mb-2">
             <div className="bg-orange-500 h-1.5 rounded-full" style={{ width: '35%' }}></div>
           </div>
-          <div className="flex justify-between text-[11px] text-gray-400 font-medium">
-            <span>11 media saved</span>
+          {/* Hide details on tablet */}
+          <div className="flex justify-between text-[11px] text-gray-400 font-medium md:hidden lg:flex">
+            <span>11 saved</span>
             <span>3 videos</span>
           </div>
         </div>
