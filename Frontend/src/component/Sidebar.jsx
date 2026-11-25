@@ -27,7 +27,7 @@ const Sidebar = ({ activeTab, setActiveTab, isOpen, setIsOpen }) => {
           w-[280px] ${isOpen ? 'translate-x-0 shadow-2xl' : '-translate-x-full'}
         `}
       >
-        <div className="flex flex-col h-full overflow-y-auto">
+        <div className="flex flex-col h-full">
           {/* Mobile Header with Close Button */}
           <div className="flex justify-between items-center p-5 lg:hidden md:hidden border-b border-gray-100">
             <span className="font-bold text-lg text-gray-900">Menu</span>
@@ -71,22 +71,19 @@ const Sidebar = ({ activeTab, setActiveTab, isOpen, setIsOpen }) => {
           </nav>
         </div>
 
-        {/* Storage Meter - VISIBLE ON ALL DEVICES but styled for each */}
-        <div className="p-4 m-3 border border-gray-200 rounded-xl shrink-0 bg-gray-50/50">
-          <div className="flex justify-between items-center text-sm mb-2">
+        {/* Storage Meter - HIDDEN ON MOBILE AND TABLET, visible only on Desktop */}
+        <div className="hidden lg:block p-4 m-4 border border-gray-200 rounded-xl shrink-0">
+          <div className="flex justify-between items-center text-sm mb-3">
             <span className="flex items-center gap-2 text-gray-600 font-medium">
-              <HardDrive size={16} /> 
-              {/* Hide text on tablet, show on mobile and desktop */}
-              <span className="md:hidden lg:block">Storage</span>
+              <HardDrive size={16} /> Storage
             </span>
-            <span className="font-bold text-[12px] md:text-[11px] lg:text-[13px] text-gray-900">34.2 MB</span>
+            <span className="font-bold text-[13px] text-gray-900">34.2 MB</span>
           </div>
-          <div className="w-full bg-gray-200 rounded-full h-1.5 mb-2">
+          <div className="w-full bg-gray-100 rounded-full h-1.5 mb-3">
             <div className="bg-orange-500 h-1.5 rounded-full" style={{ width: '35%' }}></div>
           </div>
-          {/* Hide details on tablet */}
-          <div className="flex justify-between text-[11px] text-gray-400 font-medium md:hidden lg:flex">
-            <span>11 saved</span>
+          <div className="flex justify-between text-[11px] text-gray-400 font-medium">
+            <span>11 media saved</span>
             <span>3 videos</span>
           </div>
         </div>
