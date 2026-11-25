@@ -136,7 +136,7 @@ const UploadModal = ({ isOpen, onClose }) => {
           </button>
           <button
             disabled={files.length === 0}
-            className="px-6 py-2.5 rounded-lg font-medium bg-brand text-white hover:bg-red-700 transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2"
+            className="px-6 py-2.5 rounded-lg font-medium bg-red-600 text-white hover:bg-red-700 transition-colors disabled:opacity-40 disabled:cursor-not-allowed flex items-center gap-2"
             onClick={() => console.log('Uploading', files.map(f => f.file.name))}
           >
             {files.length > 0 && <Loader2 size={15} className="animate-spin" />}
