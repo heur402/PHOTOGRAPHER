@@ -61,7 +61,7 @@ const FavoritesView = ({ onMediaClick }) => {
               <button
                 onClick={() => toggleGroupSelection(group.items)}
                 className={`w-4 h-4 rounded-full border-2 flex items-center justify-center transition-colors ${
-                  isGroupSelected ? 'bg-brand border-brand' : 'border-gray-300 hover:border-gray-400'
+                  isGroupSelected ? 'bg-#FF0000 border-brand' : 'border-gray-300 hover:border-gray-400'
                 }`}
               >
                 {isGroupSelected && <Check size={10} className="text-white" />}
@@ -96,7 +96,7 @@ const FavoritesView = ({ onMediaClick }) => {
                       onClick={(e) => toggleSelection(e, item.id)}
                       className={`absolute top-3 left-3 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all z-10 ${
                         isSelected
-                          ? 'bg-brand border-brand'
+                        ? 'bg-#FF0000 border-brand'
                           : 'border-white bg-black/20 opacity-0 group-hover:opacity-100 hover:bg-black/40'
                       }`}
                     >

@@ -106,7 +106,7 @@ const UploadModal = ({ isOpen, onClose }) => {
                       </div>
                       <div className="w-full bg-gray-200 rounded-full h-1.5">
                         <div
-                          className="bg-brand h-1.5 rounded-full transition-all"
+                          className="bg-#FF0000 h-1.5 rounded-full transition-all"
                           style={{ width: `${progress}%` }}
                         />
                       </div>

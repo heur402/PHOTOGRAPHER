@@ -24,7 +24,7 @@ const AlbumsView = ({ onCreateAlbumClick }) => {
           onClick={onCreateAlbumClick}
           className="border-2 border-dashed border-gray-200 rounded-2xl flex flex-col items-center justify-center h-64 cursor-pointer hover:border-brand hover:bg-#FFF0F0 transition-all group w-full outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
         >
-          <div className="w-12 h-12 bg-#FFF0F0 rounded-full flex items-center justify-center text-brand mb-3 group-hover:bg-brand group-hover:text-white transition-colors">
+          <div className="w-12 h-12 bg-#FFF0F0 rounded-full flex items-center justify-center text-brand mb-3 group-hover:bg-#FF0000 group-hover:text-white transition-colors">
             <Plus size={24} />
           </div>
           <span className="font-medium text-gray-700">New Album</span>
