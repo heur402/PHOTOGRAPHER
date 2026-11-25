@@ -75,7 +75,7 @@ const Sidebar = ({ activeTab, setActiveTab, isOpen, setIsOpen }) => {
         <div className="p-4 m-3 border border-gray-200 rounded-xl shrink-0 bg-gray-50/50">
           <div className="flex justify-between items-center text-sm mb-2">
             <span className="flex items-center gap-2 text-gray-600 font-medium">
-              <HardDrive size={16} />
+              <HardDrive size={16} /> 
               {/* Hide text on tablet, show on mobile and desktop */}
               <span className="md:hidden lg:block">Storage</span>
             </span>
