@@ -50,7 +50,7 @@ const TopBar = ({ onUploadClick, onMenuClick }) => {
       <div className="flex items-center gap-2 md:gap-4 md:w-[236px] justify-end relative">
         <button 
           onClick={onUploadClick}
-          className="flex items-center gap-2 bg-brand text-white px-3 md:px-5 py-2 md:py-2.5 rounded-full text-sm font-medium hover:bg-red-700 transition-colors shadow-sm"
+          className="flex items-center gap-2 bg-red-600 text-white px-3 md:px-5 py-2 md:py-2.5 rounded-full text-sm font-medium hover:bg-red-700 transition-colors shadow-sm"
         >
           <Upload size={16} /> <span className="hidden sm:block">Upload</span>
         </button>
