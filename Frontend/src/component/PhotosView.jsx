@@ -43,10 +43,8 @@ const PhotosView = () => {
     const allSelected = groupIds.every(id => selectedIds.includes(id));
     
     if (allSelected) {
-      // If all are selected, deselect only this group
       setSelectedIds(prev => prev.filter(id => !groupIds.includes(id)));
     } else {
-      // Otherwise, select all in this group
       setSelectedIds(prev => [...new Set([...prev, ...groupIds])]);
     }
   };
@@ -54,28 +52,30 @@ const PhotosView = () => {
   // Handle clicking on the image itself
   const handleImageClick = (item) => {
     if (selectedIds.length > 0) {
-      // If in selection mode, clicking the image toggles selection
       toggleSelection(null, item.id);
     } else {
-      // TODO: Open MediaViewer here
       console.log("Open viewer for image:", item.id);
     }
   };
 
   return (
     <div className="animate-fade-in relative min-h-screen pb-24">
-      {/* Header */}
-      <div className="flex justify-between items-end mb-6">
+      {/* 
+        FIX: Changed to flex-col on mobile, flex-row on tablet/desktop.
+        Added gap-4 to separate the title and filters when stacked.
+      */}
+      <div className="flex flex-col md:flex-row md:justify-between md:items-end gap-4 mb-6">
         <div>
-          <h1 className="text-3xl font-semibold text-gray-900 flex items-center gap-3">
+          <h1 className="text-2xl md:text-3xl font-semibold text-gray-900 flex items-center gap-3">
             Photos & Videos 
             <span className="bg-gray-100 text-gray-500 text-sm py-0.5 px-2.5 rounded-full font-medium">8</span>
           </h1>
-          <p className="text-gray-500 text-sm mt-1">All your preserved photos and videos, automatically organized by date</p>
+          <p className="text-gray-500 text-sm mt-1 max-w-md">All your preserved photos and videos, automatically organized by date</p>
         </div>
 
         {/* Filter Toggles */}
-        <div className="flex bg-gray-100 p-1 rounded-full">
+        {/* FIX: self-start keeps it aligned left on mobile when stacked */}
+        <div className="flex bg-gray-100 p-1 rounded-full self-start md:self-auto shrink-0">
           {['All', 'Photos', 'Videos'].map((filter) => (
             <button 
               key={filter}
@@ -117,6 +117,7 @@ const PhotosView = () => {
             </div>
             
             {/* Photo Grid */}
+            {/* FIX: Adjusted grid columns for better mobile viewing (2 cols on mobile) */}
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 md:gap-4">
               {group.items.map(item => {
                 const isSelected = selectedIds.includes(item.id);
@@ -136,10 +137,10 @@ const PhotosView = () => {
                     
                     {isSelected && <div className="absolute inset-0 bg-black/20"></div>}
 
-                    {/* Checkbox (Top Left) - Only visible on hover or if selected */}
+                    {/* Checkbox (Top Left) */}
                     <button 
                       onClick={(e) => toggleSelection(e, item.id)}
-                      className={`absolute top-3 left-3 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all z-10 ${
+                      className={`absolute top-2 left-2 md:top-3 md:left-3 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all z-10 ${
                         isSelected 
                           ? 'bg-brand border-brand' 
                           : 'border-white bg-black/20 opacity-0 group-hover:opacity-100 hover:bg-black/40'
@@ -150,14 +151,14 @@ const PhotosView = () => {
 
                     {/* Video Badge */}
                     {item.type === 'video' && (
-                      <div className="absolute bottom-3 left-3 bg-black/60 backdrop-blur-sm text-white px-2 py-1 rounded text-xs flex items-center gap-1">
-                        <Play size={12} className="fill-white" /> Video
+                      <div className="absolute bottom-2 left-2 md:bottom-3 md:left-3 bg-black/60 backdrop-blur-sm text-white px-2 py-1 rounded text-[10px] md:text-xs flex items-center gap-1">
+                        <Play size={10} className="fill-white md:w-3 md:h-3" /> Video
                       </div>
                     )}
                     
                     {/* Favorite Star */}
                     {item.id === 1 && (
-                      <Star className="absolute top-3 right-3 text-yellow-500 fill-yellow-500 drop-shadow-md" size={20} />
+                      <Star className="absolute top-2 right-2 md:top-3 md:right-3 text-yellow-500 fill-yellow-500 drop-shadow-md w-4 h-4 md:w-5 md:h-5" />
                     )}
                   </div>
                 );
@@ -175,7 +176,7 @@ const PhotosView = () => {
         onAddToAlbum={() => console.log('Add to album', selectedIds)}
         onMoveToTrash={() => {
           console.log('Move to trash', selectedIds);
-          setSelectedIds([]); // Clear after moving
+          setSelectedIds([]);
         }}
       />
     </div>
