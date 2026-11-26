@@ -1,17 +1,36 @@
-import { useState } from 'react';
-import { Search, Sparkles, Upload, LogOut } from 'lucide-react';
+import React, { useState } from 'react';
+import { Search, Sparkles, Upload, Settings, LogOut, X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const TopBar = ({ onUploadClick, onMenuClick }) => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false); // New state
   const navigate = useNavigate();
 
   return (
     <header className="h-[72px] bg-white border-b border-gray-200 flex items-center justify-between px-4 md:px-6 fixed top-0 left-0 right-0 z-30">
       
+      {/* MOBILE SEARCH OVERLAY */}
+      {isMobileSearchOpen && (
+        <div className="absolute inset-0 bg-white z-50 flex items-center px-4 md:hidden">
+          <Search size={18} className="text-gray-500 ml-1 shrink-0" />
+          <input
+            type="text"
+            placeholder="Search..."
+            autoFocus
+            className="w-full bg-transparent border-none outline-none px-3 text-[14px] text-gray-700 placeholder-gray-500"
+          />
+          <button
+            onClick={() => setIsMobileSearchOpen(false)}
+            className="p-2 text-gray-500 hover:bg-gray-100 rounded-full shrink-0"
+          >
+            <X size={20} />
+          </button>
+        </div>
+      )}
+
       {/* Left: Mobile Menu Button & Logo */}
       <div className="flex items-center gap-3 md:w-[236px]">
-        {/* Mobile Menu Button (Only visible on small screens) */}
         <button 
           onClick={onMenuClick}
           className="md:hidden p-2 text-gray-600 hover:bg-gray-100 rounded-lg"
@@ -33,7 +52,7 @@ const TopBar = ({ onUploadClick, onMenuClick }) => {
         </div>
       </div>
 
-      {/* Center: Search Bar */}
+      {/* Center: Search Bar (Desktop/Tablet) */}
       <div className="hidden md:flex flex-1 max-w-[700px] items-center bg-[#F3F4F6] rounded-full px-4 py-2.5 mx-8">
         <Search size={18} className="text-gray-500 ml-1" />
         <input 
@@ -47,10 +66,19 @@ const TopBar = ({ onUploadClick, onMenuClick }) => {
       </div>
 
       {/* Right: Actions & Profile */}
-      <div className="flex items-center gap-2 md:gap-4 md:w-[236px] justify-end relative">
+      <div className="flex items-center gap-1 sm:gap-2 md:gap-4 md:w-[236px] justify-end relative">
+
+        {/* Mobile Search Icon Trigger */}
+        <button
+          onClick={() => setIsMobileSearchOpen(true)}
+          className="md:hidden p-2 text-gray-600 hover:bg-gray-100 rounded-full"
+        >
+          <Search size={20} />
+        </button>
+
         <button 
           onClick={onUploadClick}
-          className="flex items-center gap-2 bg-red-600 text-white px-3 md:px-5 py-2 md:py-2.5 rounded-full text-sm font-medium hover:bg-red-700 transition-colors shadow-sm"
+          className="flex items-center gap-2 bg-brand text-white px-3 md:px-5 py-2 md:py-2.5 rounded-full text-sm font-medium hover:bg-red-700 transition-colors shadow-sm"
         >
           <Upload size={16} /> <span className="hidden sm:block">Upload</span>
         </button>
@@ -64,13 +92,16 @@ const TopBar = ({ onUploadClick, onMenuClick }) => {
             DK
           </div>
 
-          {/* Dropdown Menu */}
           {isProfileOpen && (
             <>
-              {/* Invisible overlay to close dropdown when clicking outside */}
               <div className="fixed inset-0 z-40" onClick={() => setIsProfileOpen(false)}></div>
-
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-lg border border-gray-100 py-1 z-50 animate-fade-in">
+                <button
+                  onClick={() => { navigate('/setting'); setIsProfileOpen(false); }}
+                  className="w-full flex items-center gap-2 px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                >
+                  <Settings size={16} /> Settings
+                </button>
                 <div className="h-px bg-gray-100 my-1"></div>
                 <button 
                   onClick={() => navigate('/login')}
