@@ -1,48 +1,101 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
+node_modules/
+node_modules
 /node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
 
-# testing
-/coverage
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+*.env
 
-# next.js
-/.next/
-/out/
-
-# production
-/build
-
-# misc
-.DS_Store
-*.pem
-
-# debug
+logs
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+lerna-debug.log*
 .pnpm-debug.log*
 
-# local env files
-.env*.local
-.env
+coverage/
+.nyc_output/
+*.lcov
 
-# vercel
-.vercel
+dist/
+build/
+out/
+.serverless/
 
-# typescript
-*.tsbuildinfo
-next-env.d.ts
+pids
+*.pid
+*.seed
+*.pid.lock
+lib-cov
 
-# cache
-.cache
+.npm
+
 .eslintcache
-.turbo
-.swc
+
+.node_repl_history
+
+*.tgz
+
+.yarn-integrity
+
+/build
+/dist
+/.next/
+/out/
+
+.vite/
+*.local
+
+.cache/
+.parcel-cache/
+.eslintcache
+
+jspm_packages/
+
+storybook-static/
+
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/launch.json
+
+.idea/
+*.iml
+*.ipr
+*.iws
+
+*.sublime-workspace
+*.sublime-project
+
+*.swp
+*.swo
+*~
+
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+*~
+.directory
+.fuse_hidden*
+
+*.bak
+*.tmp
+*.temp
+*.orig
+*.rej
+tmp/
+temp/
